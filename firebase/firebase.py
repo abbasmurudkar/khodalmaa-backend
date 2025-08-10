@@ -21,5 +21,6 @@ async def create_user(payload: dict):
         await logger.info("User created Successfully",extra={"payload": payload})
         return {"message":"User Created Successfully"}
     except Exception as e:
-        await logger.error("Firebase Auth connection failed",e)
+        await logger.error("Firebase Auth connection failed", extra={"error": str(e)})
+        return {"error": str(e)}
 
