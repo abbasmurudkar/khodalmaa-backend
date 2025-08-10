@@ -2,8 +2,10 @@ from fastapi import HTTPException,status,FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from firebase.firebase import FirebaseRouter
 import uvicorn
-app = FastAPI()
 from logger import logger
+
+
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
