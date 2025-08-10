@@ -1,5 +1,6 @@
 from fastapi import HTTPException,status,FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from firebase.firebase import FirebaseRouter
 import uvicorn
 app = FastAPI()
 from logger import logger
@@ -11,6 +12,7 @@ app.add_middleware(
     allow_methods=["*"],    
     allow_headers=["*"],
 )
+app.include_router(FirebaseRouter)
 
 @app.get("/")
 async def ping():
