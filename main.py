@@ -14,11 +14,16 @@ app.add_middleware(
     allow_methods=["*"],    
     allow_headers=["*"],
 )
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    await logger.shutdown()
+    
 app.include_router(FirebaseRouter)
 
 @app.get("/")
 async def ping():
-    logger.info("Hello from server")
+    await logger.info("Hello from server")
     print("server is on")
 
 if __name__ == "__main__":
