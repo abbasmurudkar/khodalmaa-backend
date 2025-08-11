@@ -1,5 +1,4 @@
 from fastapi import APIRouter,HTTPException
-from logger import logger
 from firebase.config import auth
 
 
@@ -18,9 +17,9 @@ async def create_user(payload: dict):
             email=payload["email"],
             password=payload["password"]
         )
-        await logger.info("User created Successfully",extra={"payload": payload})
+        print(f"User created Successfully payload:{payload}")
         return {"message":"User Created Successfully"}
     except Exception as e:
-        await logger.error("Firebase Auth connection failed", extra={"error": str(e)})
+        print(f"Firebase Auth connection failed error: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 

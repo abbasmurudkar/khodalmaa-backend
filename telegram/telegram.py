@@ -2,7 +2,6 @@ from fastapi import FastAPI, Request,HTTPException,APIRouter
 import httpx
 import asyncio
 from fastapi.middleware.cors import CORSMiddleware
-from logger import logger
 import os
 
 TelegramRouter = APIRouter(prefix="/api/v1")

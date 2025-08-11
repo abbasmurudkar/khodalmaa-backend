@@ -1,5 +1,4 @@
 from fastapi import APIRouter,HTTPException
-from logger import logger
 
 
 
