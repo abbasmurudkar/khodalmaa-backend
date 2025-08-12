@@ -1,4 +1,4 @@
-from fastapi import Request, APIRouter
+from fastapi import Request, APIRouter,HTTPException
 
 Project2Router = APIRouter(prefix="/api/v1")
 
