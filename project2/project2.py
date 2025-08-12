@@ -10,5 +10,5 @@ async def get_p2_data(req: Request):
         return {"status": "success", "data": data}
 
     except Exception as e:
-        print(f"Error in get_p2_data: {str(e)}")
-        return {"status": "error", "message": str(e)}
+        print(f"An Error occured on our site project2 {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))

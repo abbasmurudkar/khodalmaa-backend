@@ -5,7 +5,6 @@ from project1.project1 import Project1Router
 from project2.project2 import Project2Router
 from telegram.telegram import TelegramRouter
 import uvicorn
-from logger import logger
 
 
 app = FastAPI()
@@ -18,10 +17,6 @@ app.add_middleware(
     allow_headers=["*"],
 ) 
 
-@app.on_event("shutdown")
-async def shutdown_event():
-    await logger.shutdown()
-
 app.include_router(FirebaseRouter)
 app.include_router(Project1Router)
 app.include_router(Project2Router)
@@ -30,10 +25,7 @@ app.include_router(TelegramRouter)
 
 @app.get("/")
 async def ping():
-    await logger.info("Hello from server")
     print("server is on")
-
-
 
 if __name__ == "__main__":
     uvicorn.run("main:app",host="0.0.0.0",port=8000,reload=True)

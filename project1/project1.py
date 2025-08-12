@@ -1,5 +1,5 @@
 from fastapi import Request, APIRouter
-import os
+
 
 Project1Router = APIRouter(prefix="/api/v1")
 
@@ -10,7 +10,7 @@ async def get_p1_data(req: Request):
         print(f"project1 data: {data}")
         return {"status": "success", "data": data}
 
+
     except Exception as e:
-        # Log error (optional: replace with actual logger)
-        print(f"Error in get_p1_data: {str(e)}")
-        return {"status": "error", "message": str(e)}
+        print(f"An Error occured on our site project1 {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
