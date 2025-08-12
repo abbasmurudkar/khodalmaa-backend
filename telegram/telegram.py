@@ -1,7 +1,5 @@
-from fastapi import FastAPI, Request,HTTPException,APIRouter
+from fastapi import  Request,APIRouter,HTTPException
 import httpx
-import asyncio
-from fastapi.middleware.cors import CORSMiddleware
 import os
 
 TelegramRouter = APIRouter(prefix="/api/v1")
@@ -25,6 +23,8 @@ async def send_telegram_alert(req: Request):
         async with httpx.AsyncClient() as client:
             response = await client.post(telegram_url, json=payload)
             return {"telegram_response": response.json()}
+
     except Exception as e:
-        print(f"An Error occured on our site {str(e)}")
+        print(f"An Error occured on our site telegram {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
