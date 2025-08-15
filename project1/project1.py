@@ -19,7 +19,7 @@ async def get_p1_data(req: Request):
 
         for conn in connections_project1:
             try:
-                await conn.send_json({"updated_data": data})
+                await conn.send_json(data)
             except Exception as e:
                 print(f"Error sending to WebSocket: {e}")
 
