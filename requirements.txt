@@ -7,3 +7,4 @@ pendulum
 aiologger
 python-dotenv
 firebase_admin
+websockets
