@@ -36,7 +36,7 @@ async def ws_project1(websocket: WebSocket):
     print("Frontend connected to Project1 WS")
 
     # Send current state immediately on connect
-    await websocket.send_json({"initial_data": latest_project1_data})
+    await websocket.send_json(latest_project1_data)
 
     try:
         while True:
